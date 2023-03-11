@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Allowance\Application\Service;
+
 class WorkDaysCalculator
 {
     public function calculate(\DateTime $startDate, int $days): int
