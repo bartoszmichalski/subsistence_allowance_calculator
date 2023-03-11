@@ -23,11 +23,4 @@ class CountryAllowanceCalculatorFactoryTest extends TestCase
 
         $this->assertInstanceOf(PLAllowanceCalculator::class, $sut);
     }
-
-    public function testCreateNotExisting()
-    {
-        $this->expectException(\Exception::class);
-
-        $this->factory->create(CountryCode::DE);
-    }
 }

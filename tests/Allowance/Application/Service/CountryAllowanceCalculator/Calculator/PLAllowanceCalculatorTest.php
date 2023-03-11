@@ -7,6 +7,8 @@ use PHPUnit\Framework\TestCase;
 
 class PLAllowanceCalculatorTest extends TestCase
 {
+    private PLAllowanceCalculator $calculator;
+
     protected function setUp(): void
     {
         parent::setUp();

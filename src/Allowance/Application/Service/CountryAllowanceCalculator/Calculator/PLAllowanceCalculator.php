@@ -2,27 +2,14 @@
 
 namespace App\Allowance\Application\Service\CountryAllowanceCalculator\Calculator;
 
-class PLAllowanceCalculator implements AllowanceCalculatorInterface
+class PLAllowanceCalculator extends AbstractCountryCalculator implements AllowanceCalculatorInterface
 {
-    const BASE_AMOUNT = 10;
+    protected float $baseAmount = 10;
 
-    const MODIFIERS = [
+    protected array $modifiers = [
         4 => [
             'operation' => '*',
             'argument' => 2,
         ]
     ];
-    public function calc(int $workDays): int
-    {
-        $sum = 0;
-        $currentAllowance = self::BASE_AMOUNT;
-        for ($i = 1; $i <= $workDays; $i++){
-            if (isset(self::MODIFIERS[$i])) {
-                $currentAllowance = $currentAllowance * self::MODIFIERS[$i]['argument'];
-            }
-            $sum += $currentAllowance;
-        }
-
-        return $sum;
-    }
 }

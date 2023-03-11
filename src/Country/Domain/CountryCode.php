@@ -7,4 +7,9 @@ enum CountryCode
     case DE;
     case ES;
     case GB;
+
+    public static function from(string $name){
+
+        return constant("self::$name");
+    }
 }

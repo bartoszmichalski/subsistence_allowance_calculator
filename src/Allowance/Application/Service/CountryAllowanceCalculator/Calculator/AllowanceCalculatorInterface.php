@@ -4,5 +4,5 @@ namespace App\Allowance\Application\Service\CountryAllowanceCalculator\Calculato
 
 interface AllowanceCalculatorInterface
 {
-    public function calc(int $workDays): int;
+    public function calc(int $workDays): float;
 }

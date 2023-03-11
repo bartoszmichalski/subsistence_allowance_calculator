@@ -1,6 +1,8 @@
 <?php
+namespace App\Allowance\Application\Query\GetAllowanceSum;
 
 use App\Country\Domain\CountryCode;
+use DateTime;
 
 readonly class GetAllowanceSumQuery
 {
