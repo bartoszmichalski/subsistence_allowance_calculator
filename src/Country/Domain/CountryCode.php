@@ -1,15 +1,11 @@
 <?php
 
 namespace App\Country\Domain;
-enum CountryCode
+
+enum CountryCode: string
 {
-    case PL;
-    case DE;
-    case ES;
-    case GB;
-
-    public static function from(string $name){
-
-        return constant("self::$name");
-    }
+    case PL = 'PL';
+    case DE = 'DE';
+    case ES = 'ES';
+    case GB = 'GB';
 }

@@ -8,7 +8,7 @@ readonly class GetAllowanceSumQuery
 {
     public function __construct(
         public DateTime $startDate,
-        public int $days,
+        public DateTime $endDate,
         public CountryCode $countryCode,
     ) {
     }

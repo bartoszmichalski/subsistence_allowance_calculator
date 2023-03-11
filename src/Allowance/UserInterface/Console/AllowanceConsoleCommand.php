@@ -18,7 +18,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 )]
 class AllowanceConsoleCommand extends Command
 {
-
     public function __construct(
         private AllowanceService $service
     ) {
@@ -29,16 +28,16 @@ class AllowanceConsoleCommand extends Command
     {
         $this
             ->addArgument('country', InputArgument::REQUIRED, 'Kraj delegacji')
-            ->addArgument('startDate', InputArgument::REQUIRED, 'Data rozpoczęcia delegacji')
-            ->addArgument('days', InputArgument::REQUIRED, 'ilość dni');
+            ->addArgument('startDate', InputArgument::REQUIRED, 'Data rozpoczęcia delegacji np 2023-03-11_13:11')
+            ->addArgument('endDate', InputArgument::REQUIRED, 'Data zakończenia delegacji np 2023-03-17_21:11');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $result = $this->service->calculate(
             CountryCode::from($input->getArgument('country')),
-            \DateTime::createFromFormat('Y-m-d',$input->getArgument('startDate')),
-            $input->getArgument('days')
+            \DateTime::createFromFormat('Y-m-d_H:i', $input->getArgument('startDate')),
+            \DateTime::createFromFormat('Y-m-d_H:i', $input->getArgument('endDate'))
         );
 
         $output->write('Kwota diety: '.$result."\n");

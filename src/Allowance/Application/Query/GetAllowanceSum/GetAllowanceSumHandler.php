@@ -19,7 +19,7 @@ readonly class GetAllowanceSumHandler
     {
         $workDaysAmount = $this->workDaysCalculator->calculate(
             $query->startDate,
-            $query->days
+            $query->endDate
         );
 
         $countryAllowanceCalculator = $this->factory->create($query->countryCode);

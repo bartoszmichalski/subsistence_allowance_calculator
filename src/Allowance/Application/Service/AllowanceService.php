@@ -8,7 +8,7 @@ use DateTime;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
 
-class AllowanceService
+readonly class AllowanceService
 {
     public function __construct(
         private MessageBusInterface $bus
@@ -17,14 +17,19 @@ class AllowanceService
 
     public function calculate(
         CountryCode $countryCode,
-         DateTime $startDate,
-         int $days,
+        DateTime    $startDate,
+        DateTime    $endDate,
     ) {
-        $envelope =  $this->bus->dispatch(new GetAllowanceSumQuery(
-            $startDate, $days, $countryCode
-        ));
+        $envelope = $this->bus->dispatch(
+            new GetAllowanceSumQuery(
+                $startDate,
+                $endDate,
+                $countryCode
+            )
+        );
 
         $handledStamp = $envelope->last(HandledStamp::class);
+
         return $handledStamp->getResult();
     }
 }
